@@ -40,7 +40,7 @@ def print_report(model, dl):
 
 if __name__ == '__main__':
 
-    history = "C:/Users/Victor/Desktop/COD_LICENTA/saved_historys/inceptionv3_not_history.csv"
+    history = "Path/To/history.csv"
     plot_accuracy(history)
     plot_loss(history)
 
