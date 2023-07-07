@@ -1,7 +1,7 @@
 import splitfolders
 
-input_folder = 'C:/Users/Victor/Desktop/LICENTA/BreakHis'
-output_folder = 'C:/Users/Victor/Desktop/LICENTA/BreakHis_split'
+input_folder = 'Path/To/BreakHis'
+output_folder = 'Path/To/BreakHis_split'
 
 if __name__ == '__main__':
 
