@@ -9,9 +9,7 @@ import torchvision.transforms as T
 import time
 import os
 from models import resnet50_model, densenet121_model, inceptionv3_model
-# from torchvision.models import resnet50, densenet121, inception_v3
 import pandas as pd
-import results
 
 def binary_accuracy(outputs, labels, device):
     metric = BinaryAccuracy().to(device)
@@ -103,83 +101,56 @@ def train(model, criterion, optimiser, scheduler, epochs, train_dl, val_dl, save
 
     return history
 
-# def resnet50_model(weights=None):
-#     model = resnet50(weights=weights)
-#     model.fc = nn.Sequential(
-#         nn.Dropout(0.5),
-#         nn.Linear(in_features=2048, out_features=1),
-#         nn.Sigmoid()
-#     )
-#     return model
-
-# def inceptionv3_model(weights=None):
-#     model = inception_v3(weights=weights)
-#     model.fc = nn.Sequential(
-#         nn.Linear(in_features=2048, out_features=1),
-#         nn.Sigmoid()
-#     )
-#     return model
-
-# def densenet121_model(weights=None):
-#     model = densenet121(weights=weights)
-#     model.classifier = nn.Sequential(
-#         nn.Dropout(0.5),
-#         nn.Linear(in_features=1024, out_features=1),
-#         nn.Sigmoid()
-#     )
-#     return model
-
-# def main(args):
-    
-#     model = inceptionv3_model()
-#     model.to(args.get('device'))
-
-#     train_transforms = T.Compose([T.Resize(size=(299, 299)), T.RandomHorizontalFlip(), T.ToTensor()])
-#     val_transforms = T.Compose([T.Resize(size=(299, 299)), T.ToTensor()])
-
-#     train_ds = ImageFolder(root=args.get('train_dir'), transform=train_transforms)
-#     val_ds = ImageFolder(root=args.get('val_dir'), transform=val_transforms)
-
-#     train_dl = create_dl(train_ds, args.get('batch_size'))
-#     val_dl = create_dl(val_ds, args.get('batch_size'))
-
-#     criterion = nn.BCELoss()
-#     optimiser = Adam(model.parameters(), lr=args.get('learning_rate'))
-#     scheduler = ReduceLROnPlateau(optimizer=optimiser, factor=0.25, patience=5, threshold=0.001, verbose=True)
-
-#     history = train(model, criterion, optimiser, scheduler, args.get('epochs'), train_dl, val_dl, args.get('save_state_dict'), args.get('device'))
-
-#     return history
+def save_history(history, save_path):
+    history = pd.DataFrame(history)
+    history.to_csv(save_path)
 
 if __name__ == '__main__':
 
-    args = {
-        'device': 'cuda',
-        'train_dir': 'C:/Users/Victor/Desktop/LICENTA/BreakHis_Split/train',
-        'test_dir': 'C:/Users/Victor/Desktop/LICENTA/BreakHis_Split/test',
-        'val_dir': 'C:/Users/Victor/Desktop/LICENTA/BreakHis_Split/val',
-        'save_state_dict': 'C:/Users/Victor/Desktop/COD_LICENTA/saved_models/densenet_model.pt',
-        'batch_size': 16,
-        'learning_rate': 0.001,
-        'epochs': 1
-    }
+    TRAIN_DIR = 'Path/To/BreakHis_Split/train'
+    VAL_DIR = 'Path/To/BreakHis_Split/val'
+    TEST_DIR = 'Path/To/BreakHis_Split/test'
+    SAVE_STATE_DICT = 'Path/To/saved_models/'
+    SAVE_HISTORY = 'Path/To/saved_historys/'
 
-    model = inceptionv3_model()
-    model.to(args.get('device'))
+    DEVICE = 'cuda' if torch.cuda.is_available() else 'cpu'
+    BATCH_SIZE = 16
+    EPOCHS = 100
 
-    train_transforms = T.Compose([T.Resize(size=(299, 299)), T.RandomHorizontalFlip(), T.ToTensor()])
-    val_transforms = T.Compose([T.Resize(size=(299, 299)), T.ToTensor()])
+    LEARNING_RATE = 0.001
+    CRITERION = nn.BCELoss()
 
-    train_ds = ImageFolder(root=args.get('train_dir'), transform=train_transforms)
-    val_ds = ImageFolder(root=args.get('val_dir'), transform=val_transforms)
+    model, name = inceptionv3_model()
+    model.to(DEVICE)
 
-    train_dl = create_dl(train_ds, args.get('batch_size'))
-    val_dl = create_dl(val_ds, args.get('batch_size'))
+    if 'inceptionv3' in name:
+        SIZE = (299, 299)
+    else:
+        SIZE = (224, 224)
 
-    criterion = nn.BCELoss()
-    optimiser = Adam(model.parameters(), lr=args.get('learning_rate'))
-    scheduler = ReduceLROnPlateau(optimizer=optimiser, factor=0.25, patience=5, threshold=0.001, verbose=True)
+    train_transforms = T.Compose([T.Resize(size=SIZE), T.RandomHorizontalFlip(), T.ToTensor()])
+    val_transforms = T.Compose([T.Resize(size=SIZE), T.ToTensor()])
 
-    history = train(model, criterion, optimiser, scheduler, args.get('epochs'), train_dl, val_dl, args.get('save_state_dict'), save_best=False, device=args.get('device'))
+    train_ds = ImageFolder(root=TRAIN_DIR, transform=train_transforms)
+    val_ds = ImageFolder(root=VAL_DIR, transform=val_transforms)
+
+    train_dl = create_dl(train_ds, BATCH_SIZE)
+    val_dl = create_dl(val_ds, BATCH_SIZE)
+
+    OPTIMIZER = Adam(model.parameters(), lr=LEARNING_RATE)
+    LR_SCHEDULER = ReduceLROnPlateau(optimizer=OPTIMIZER, factor=0.25, patience=5, threshold=0.001, verbose=True)
+
+    history = train(model,
+                    CRITERION, 
+                    OPTIMIZER, 
+                    LR_SCHEDULER, 
+                    EPOCHS, 
+                    train_dl, 
+                    val_dl, 
+                    SAVE_STATE_DICT+name+'.pt',
+                    save_best=False,
+                    device=DEVICE)
+    
+    save_history(history, SAVE_HISTORY+name+'_history.csv')
     
     
