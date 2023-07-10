@@ -1,5 +1,8 @@
 # Convolutional-Neural-Networks-In-Breast-Cancer-Classification
 
+## Summary
+
+The study aimed to compare the performance of 3 separate CNN models, both pretrained and trained from scratch, in the task of histopathological image classification. All models have beeen trained according to the procedure presented below. Moreover, each network's classifier has been adapted to the task of binary classification, by reducing the number of units of the last fully-connected layer to 1. It was found that pretrained models produce superior results in terms of accuracy while also being more time efficient, having reached peak performance almost twice as fast as their trained from scratch counterparts.  
 
 
 ## Models
