@@ -19,25 +19,63 @@ The Breast Cancer Histopathological Image Classification (BreakHis) is composed 
 - LR SCHEDULER: ReduceLROnPlateau (factor=0.25, patience=5, threshold=0.001)
 
 ### Results
-#### Pretrained
+
+#### Not Pretrained
+
 DenseNet-121  
 
- | | Precision | Recall | F1 Score | Accuracy |
+| | Precision | Recall | F1 Score | Accuracy |
 |--|-----------|---------|---------|----------|
-| Benign | 0.9315 | 0.9315 | 0.9315 | |
+| Benign | 0.9315 | 0.9315 | 0.9315 | 0.9571 |
 | Malign | 0.9688 | 0.9688 | 0.9688 | 0.9571 |
-| Medie | 0.9501 | 0.9501 | 0.9501 | |
-| Medie Ponderată | 0.9571 | 0.9571 | 0.9571 | |
-
+| Mean | 0.9501 | 0.9501 | 0.9501 | 0.9571 |
+| Weighted mean | 0.9571 | 0.9571 | 0.9571 | 0.9571 |
 
 InceptionNetV3
-Benign 0.9352 0.9315 0.9333
-Malign 0.9688 0.9706 0.9697 0.9583
-Medie 0.9520 0.9510 0.9515
-Medie Ponderată 0.9583 0.9583 0.9583
-ResNet-50
-Benign 0.9246 0.9395 0.9320
-Malign 0.9722 0.9651 0.9686 0.9571
-Medie 0.9484 0.9523 0.9503
-Medie Ponderată 0.9573 0.9571 0.9572
+
+| | Precision | Recall | F1 Score | Accuracy |
+|--|-----------|---------|---------|----------|
+| Benign | 0.9352 | 0.9315 | 0.9333 | 0.9583 |
+| Malign | 0.9688 | 0.9706 | 0.9697 | 0.9583 |
+| Mean | 0.9520 | 0.9510 | 0.9515 | 0.9583 |
+| Weighted mean | 0.9583 | 0.9583 | 0.9583 | 0.9583 |
+
+ResNet-50 
+
+| | Precision | Recall | F1 Score | Accuracy |
+|--|-----------|---------|---------|----------|
+| Benign | 0.9246 | 0.9395  | 0.9320 | 0.9571 |
+| Malign | 0.9722 | 0.9651 | 0.9686  | 0.9571 |
+| Mean | 0.9484 | 0.9523 | 0.9503 | 0.9571 |
+| Weighted mean | 0.9573 | 0.9571 | 0.9572 | 0.9571 |
+
+#### Pretrained
+
+DenseNet-121
+
+| | Precision | Recall | F1 Score | Accuracy |
+|--|-----------|---------|---------|----------|
+| Benign | 0.9759 | 0.9798 | 0.9779 | 0.9861 |
+| Malign | 0.9908 | 0.9890  | 0.9899 | 0.9861 |
+| Mean | 0.9833 | 0.9844 | 0.9839 | 0.9861 |
+| Weighted mean | 0.9861 | 0.9861 | 0.9861 | 0.9861 |
+
+InceptionNet-V3
+
+| | Precision | Recall | F1 Score | Accuracy |
+|--|-----------|---------|---------|----------|
+| Benign | 0.9839 | 0.9839 | 0.9839 | 0.9899 |
+| Malign | 0.9926 | 0.9926  | 0.9926 | 0.9899 |
+| Mean | 0.9883 | 0.9883 | 0.9883 | 0.9899 |
+| Weighted mean | 0.9899 | 0.9899 | 0.9899 | 0.9899 |
+  
+ResNet-50  
+
+| | Precision | Recall | F1 Score | Accuracy |
+|--|-----------|---------|---------|----------|
+| Benign | 0.9759 | 0.9798 | 0.9779 | 0.9861 |
+| Malign | 0.9908 | 0.9890 | 0.9899 | 0.9861 |
+| Mean | 0.9833 | 0.9844 | 0.9839 | 0.9861 |
+| Weighted mean | 0.9861 | 0.9861 | 0.9861 | 0.9861 |
+
 [^1]: https://www.kaggle.com/datasets/ambarish/breakhis 
