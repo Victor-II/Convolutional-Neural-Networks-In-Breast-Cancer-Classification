@@ -2,15 +2,15 @@
 
 
 
-### Models
+## Models
 - ResNet-50 (pretrained & not pretrained)
 - DenseNet-121 (pretrained & not pretrained)
 - InceptionNet-V3 (pretrained & not pretrained)
 
-### Breakhis Dataset
+## Breakhis Dataset
 The Breast Cancer Histopathological Image Classification (BreakHis) is composed of 7,909 microscopic images of breast tumor tissue collected from 82 patients using different magnifying factors (40X, 100X, 200X, and 400X). To date, it contains 2,480 benign and 5,429 malignant samples (700X460 pixels, 3-channel RGB, 8-bit depth in each channel, PNG format) [^1].
 
-### Training Parameters  
+## Training Parameters  
 - DEVICE: Cuda
 - BATCH SIZE: 16
 - EPOCHS: 100
@@ -18,11 +18,11 @@ The Breast Cancer Histopathological Image Classification (BreakHis) is composed 
 - OPTIMIZER: ADAM (LR = 0.001 > not pretrained / LR = 0.0001 > pretrained)
 - LR SCHEDULER: ReduceLROnPlateau (factor=0.25, patience=5, threshold=0.001)
 
-### Results
+## Results
 
-#### Not Pretrained
+### Not Pretrained
 
-DenseNet-121  
+#### DenseNet-121  
 
 | | Precision | Recall | F1 Score | Accuracy |
 |--|-----------|---------|---------|----------|
@@ -31,7 +31,7 @@ DenseNet-121
 | Mean | 0.9501 | 0.9501 | 0.9501 | 0.9571 |
 | Weighted mean | 0.9571 | 0.9571 | 0.9571 | 0.9571 |
 
-InceptionNetV3
+#### InceptionNetV3
 
 | | Precision | Recall | F1 Score | Accuracy |
 |--|-----------|---------|---------|----------|
@@ -40,7 +40,7 @@ InceptionNetV3
 | Mean | 0.9520 | 0.9510 | 0.9515 | 0.9583 |
 | Weighted mean | 0.9583 | 0.9583 | 0.9583 | 0.9583 |
 
-ResNet-50 
+#### ResNet-50 
 
 | | Precision | Recall | F1 Score | Accuracy |
 |--|-----------|---------|---------|----------|
@@ -49,9 +49,9 @@ ResNet-50
 | Mean | 0.9484 | 0.9523 | 0.9503 | 0.9571 |
 | Weighted mean | 0.9573 | 0.9571 | 0.9572 | 0.9571 |
 
-#### Pretrained
+### Pretrained
 
-DenseNet-121
+#### DenseNet-121
 
 | | Precision | Recall | F1 Score | Accuracy |
 |--|-----------|---------|---------|----------|
@@ -60,7 +60,7 @@ DenseNet-121
 | Mean | 0.9833 | 0.9844 | 0.9839 | 0.9861 |
 | Weighted mean | 0.9861 | 0.9861 | 0.9861 | 0.9861 |
 
-InceptionNet-V3
+#### InceptionNet-V3
 
 | | Precision | Recall | F1 Score | Accuracy |
 |--|-----------|---------|---------|----------|
@@ -69,7 +69,7 @@ InceptionNet-V3
 | Mean | 0.9883 | 0.9883 | 0.9883 | 0.9899 |
 | Weighted mean | 0.9899 | 0.9899 | 0.9899 | 0.9899 |
   
-ResNet-50  
+#### ResNet-50  
 
 | | Precision | Recall | F1 Score | Accuracy |
 |--|-----------|---------|---------|----------|
