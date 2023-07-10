@@ -53,7 +53,7 @@ The Breast Cancer Histopathological Image Classification (BreakHis) is composed 
 | Weighted mean | 0.9573 | 0.9571 | 0.9572 | 0.9571 |
 
 ### Pretrained
-
+---
 #### DenseNet-121
 
 | | Precision | Recall | F1 Score | Accuracy |
