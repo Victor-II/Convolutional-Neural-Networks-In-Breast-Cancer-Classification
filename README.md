@@ -11,7 +11,7 @@ The study aimed to compare the performance of 3 separate CNN models, both pretra
 - InceptionNet-V3 (pretrained & not pretrained)
 
 ## Breakhis Dataset
-The Breast Cancer Histopathological Image Classification (BreakHis) is composed of 7,909 microscopic images of breast tumor tissue collected from 82 patients using different magnifying factors (40X, 100X, 200X, and 400X). To date, it contains 2,480 benign and 5,429 malignant samples (700X460 pixels, 3-channel RGB, 8-bit depth in each channel, PNG format) [^1].
+The Breast Cancer Histopathological Image Classification (BreakHis) is composed of 7,909 microscopic images of breast tumor tissue collected from 82 patients using different magnifying factors (40X, 100X, 200X, and 400X). To date, it contains 2,480 benign and 5,429 malignant samples (700X460 pixels, 3-channel RGB, 8-bit depth in each channel, PNG format) [^1]. The dataset was split into 3 subsets as follows: 80% for training, 10% for validation and the remaining 10% for testing.
 
 ## Training Parameters  
 - DEVICE: Cuda
